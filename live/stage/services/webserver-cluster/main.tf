@@ -3,15 +3,21 @@ provider "aws" {
 }
 
 module "webserver_cluster" {
-  source = "../../../modules/services/webserver-cluster"
+  #SSH source URL git@github.com:<OWNER>/<REPO>.git//<PATH>?ref=<VERSION>
+  #source = "git@github.com:dwx82/Brikman_Terraform_3_modules.git//services/webserver-cluster?ref=v0.0.1"
+  source = "git::https://github.com/dwx82/Brikman_Terraform_3_modules.git//services/webserver-cluster?ref=master"
+
+  ami         = "ami-0fb653ca2d3203ac1"
+  server_text = "New server text v2"
 
   cluster_name           = "webservers-stage"
   db_remote_state_bucket = "terraform-up-and-running-v3-state"
   db_remote_state_key    = "stage/data-stores/mysql/terraform.tfstate"
 
-  instance_type = "t2.micro"
-  min_size      = 2
-  max_size      = 2
+  instance_type      = "t2.micro"
+  min_size           = 2
+  max_size           = 2
+  enable_autoscaling = false
 }
 
 /*
