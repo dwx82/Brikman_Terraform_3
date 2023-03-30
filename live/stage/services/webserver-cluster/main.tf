@@ -8,7 +8,7 @@ module "webserver_cluster" {
   source = "git::https://github.com/dwx82/Brikman_Terraform_3_modules.git//services/webserver-cluster?ref=master"
 
   ami         = "ami-0fb653ca2d3203ac1"
-  server_text = "New server text v2"
+  server_text = "New server text v3"
 
   cluster_name           = "webservers-stage"
   db_remote_state_bucket = "terraform-up-and-running-v3-state"
