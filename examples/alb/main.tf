@@ -3,7 +3,7 @@ provider "aws" {
 }
 module "alb" {
   source     = "../../modules/networking/alb"
-  alb_name   = "terraform-up-and-running"
+  alb_name   = "terraform-upand-running"
   subnet_ids = data.aws_subnets.default.ids
 }
 
